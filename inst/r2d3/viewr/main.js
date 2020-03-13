@@ -1,18 +1,8 @@
 // !preview r2d3 data = NULL, container = 'div', options = list(shiny_message_loc = 'my_shiny_app'), dependencies = "d3-jetpack"
 const system_font = `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 
-const {
-  shiny_message_loc,
-  shiny_ready_loc = 'ready_for_photo',
-  output_size,
-} = options;
-
 const image_size = Object.assign({width: 300, height: 300}, output_size);
 
-const shutter_text = {
-  taking: 'Sending photo...',
-  ready: 'Take photo!',
-};
 
 const no_camera_message = "Shiny can't get access to cameras. This is a privacy consideration. Make sure you are trying from a secure (https, or localhost) site.";
 
@@ -28,16 +18,6 @@ div.st({
   flexDirection: 'column',
   alignItems: 'center',
 });
-
-const shutter = div.selectAppend('button')
-  .text(shutter_text.ready)
-  .st({
-    width: '80%',
-    height: '40px',
-    fontSize: '24px',
-    borderRadius: '8px',
-    fontFamily: system_font,
-  });
 
 const camera_chooser = div.selectAppend('select.camera_chooser')
   .style('display', 'none');
