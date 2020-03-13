@@ -2,6 +2,8 @@
 const system_font = `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 
 const {
+  shiny_message_loc,
+  shiny_ready_loc = 'ready_for_photo',
   output_size,
 } = options;
 
