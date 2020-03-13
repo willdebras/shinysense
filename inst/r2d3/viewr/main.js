@@ -1,6 +1,10 @@
 // !preview r2d3 data = NULL, container = 'div', options = list(shiny_message_loc = 'my_shiny_app'), dependencies = "d3-jetpack"
 const system_font = `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 
+const {
+  output_size,
+} = options;
+
 const image_size = Object.assign({width: 300, height: 300}, output_size);
 
 
