@@ -80,8 +80,6 @@ shinyviewr <- function(
       container = 'div',
       dependencies = 'd3-jetpack',
       options = list(
-        shiny_message_loc = photo_send_loc,
-        shiny_ready_loc = photo_recieved_loc,
         output_size = list(
           width = output_width,
           height = output_height
