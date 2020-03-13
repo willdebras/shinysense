@@ -2,8 +2,6 @@
 const system_font = `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 
 const {
-  shiny_message_loc,
-  shiny_ready_loc = 'ready_for_photo',
   output_size,
 } = options;
 
@@ -25,8 +23,8 @@ div.st({
   alignItems: 'center',
 });
 
-const camera_chooser = div.selectAppend('select.camera_chooser')
-  .style('display', 'none');
+//const camera_chooser = div.selectAppend('select.camera_chooser')
+//  .style('display', 'none');
 
 const no_camera_alert = div.selectAppend('p')
   .text(no_camera_message)
@@ -136,38 +134,3 @@ function attach_camera_stream(camera_id = null){
 
 // Initiate camera stream to default camera.
 attach_camera_stream();
-
-// ================================================================
-// Shutter watcher
-// ================================================================
-shutter.on('click', function(){
-
-  if(is_shiny_app){
-    shutter.text(shutter_text.taking);
-  }
-
-  // Append a snapshot of video canvas element context
-  photo_holder
-    .getContext('2d')
-    .drawImage(video_element, 0, 0, image_size.width, image_size.height);
-
-  // Grab photo data as a dataurl
-  const photo_data = photo_holder.toDataURL("image/png");
-
-  // Send to shiny if needed.
-  if(is_shiny_app){
-    Shiny.onInputChange(shiny_message_loc, photo_data);
-  }
-});
-
-
-// Wait for a message from shiny letting us know it got the image.
-if(is_shiny_app){
-  // Handle message from shiny saying photo was received.
-  Shiny.addCustomMessageHandler(
-    shiny_ready_loc,
-    message => {
-      // Replace shutter text with default.
-      shutter.text(shutter_text.ready);
-    });
-}
